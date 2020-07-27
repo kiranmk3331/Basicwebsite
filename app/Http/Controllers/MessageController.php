@@ -7,7 +7,8 @@ use App\Message;
 
 class MessageController extends Controller
 {
-    public function submit(Request $request){
+    public function submit(Request $request)
+    {
 
         $data =$request->validate([
             'name' => 'required',
@@ -24,8 +25,10 @@ class MessageController extends Controller
             Message::create($data);
 
         return redirect('/')->with('success','message sent');
-
-
-
+    }
+    public function show()
+    {
+        $messages = Message::all();
+        return view('show',compact('messages'));
     }
 }

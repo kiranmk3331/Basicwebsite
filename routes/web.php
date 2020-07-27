@@ -13,13 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/','PageController@gethome');
+Route::get('/about', 'PageController@getabout');
+Route::get('/contact', 'PageController@getcontact');
+
 Route::post('/contact/submit', 'MessageController@submit');
+Route::get('/messages','MessageController@show');
